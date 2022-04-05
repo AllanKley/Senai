@@ -1,0 +1,15 @@
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\bin\Debug\net6.0\LinqEx.exe
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\bin\Debug\net6.0\LinqEx.deps.json
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\bin\Debug\net6.0\LinqEx.runtimeconfig.json
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\bin\Debug\net6.0\LinqEx.dll
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\bin\Debug\net6.0\ref\LinqEx.dll
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\bin\Debug\net6.0\LinqEx.pdb
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.csproj.AssemblyReference.cache
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.GeneratedMSBuildEditorConfig.editorconfig
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.AssemblyInfoInputs.cache
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.AssemblyInfo.cs
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.csproj.CoreCompileInputs.cache
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.dll
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\ref\LinqEx.dll
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.pdb
+E:\ProgramacaoDeAplcicativos\LinqEx\LinqEx\obj\Debug\net6.0\LinqEx.genruntimeconfig.cache
