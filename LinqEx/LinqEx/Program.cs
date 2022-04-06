@@ -20,18 +20,18 @@ Universidade uni = new Universidade();
 //uni.Pesquisa2();
 //WriteLine();
 
-("Liste os professores e seus salários com seus respectivos alunos.").Print();
-uni.Pesquisa3();
-WriteLine();
+//("Liste os professores e seus salários com seus respectivos alunos.").Print();
+//uni.Pesquisa3();
+//WriteLine();
 
 //("Top 10 Professores com mais alunos da universidade.").Print();
 //uni.Pesquisa4();
 //WriteLine();
 
-//("Considerando que todo aluno custa 300 reais mais o salário dos seus professores" +
-//    " divido entre seus colegas de classe. Liste os alunos e seus respectivos custos.").Print();
-//uni.Pesquisa5();
-//WriteLine();
+("Considerando que todo aluno custa 300 reais mais o salário dos seus professores" +
+    " divido entre seus colegas de classe. Liste os alunos e seus respectivos custos.").Print();
+uni.Pesquisa5();
+WriteLine();
 
 ReadKey(true);
 
@@ -131,19 +131,10 @@ static class Pesquisador
             }).GroupBy(x => x.NomeProfessor);
 
 
-
-
         foreach (var professor in Pesquisa)
         {
             WriteLine(professor.First().NomeProfessor.Split(" ").First() + "\t-    " + professor.First().contador);
         }
-
-        
-
-
-
-
-
     }
 
 
@@ -154,7 +145,17 @@ static class Pesquisador
     /// </summary>
     public static void Pesquisa4(this Universidade uni)
     {
-        WriteLine("Não implementado!");
+        var result = uni.Professores.Join(uni.Turmas, x => x.ID, t => t.ProfessorID, (x, t) => new
+        {
+            Nome = x.Nome,
+            QtdAlunos = uni.Alunos.Count(y => y.TurmasMatriculados.Contains(t.ID))
+        }).OrderByDescending(x => x.QtdAlunos).GroupBy(x => x.Nome).Take(10);
+
+        Console.WriteLine("Professor\tQtd Alunos\n");
+        foreach (var item in result)
+        {
+            Console.WriteLine(item.First().Nome.Split(" ").First() + " \t\t " + item.First().QtdAlunos);
+        }
     }
 
     /// <summary>
@@ -163,7 +164,40 @@ static class Pesquisador
     /// </summary>
     public static void Pesquisa5(this Universidade uni)
     {
-        WriteLine("Não implementado!");
+        var Pesquisa = uni.Alunos
+             .Select(x => new
+             {
+                 Nome = x.Nome,
+                 Turmas = x.TurmasMatriculados.Join(uni.Turmas, t => t, x => x.ID, (t, x) => new
+                 {
+                     Id = x.ID,
+                     ProfessorID = x.ProfessorID,
+                     QtdAlunos = uni.Alunos.Count(y => y.TurmasMatriculados.Contains(x.ID))
+                 }).Join(uni.Professores, a => a.ProfessorID, y => y.ID, (a, y) => new
+                 {
+                     QtdAlunos = a.QtdAlunos,
+                     NomeProfessor = y.Nome,
+                     SalarioProfessor = y.Salario,
+                 }).Select(x => new
+                 {
+                     CustoTotal = (x.SalarioProfessor/x.QtdAlunos)
+                 })
+             }).Select(x => new
+             {
+                 NomeAluno = x.Nome,
+                 CustoTotal = 300+(x.Turmas.Sum(y => y.CustoTotal)),
+             });
+
+
+
+        foreach (var Aluno in Pesquisa)
+        {
+            Console.WriteLine($"Nome: {Aluno.NomeAluno.Split(" ").First()}\nCusto: {Aluno.CustoTotal.ToString("R$ 00.00")}");
+
+
+            WriteLine();
+        }
+
     }
 }
 
