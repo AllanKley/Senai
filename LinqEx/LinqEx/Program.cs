@@ -48,16 +48,6 @@ static class Pesquisador
     /// </summary>
     public static void Pesquisa1(this Universidade uni)
     {
-
-        //var Pesquisa = uni.Disciplinas
-        //    .GroupBy(x => x.DepartamentoID)
-        //    .Join(uni.Departamentos, g => g.Key, d => d.ID, (g, d) => new
-        //    {
-        //        NomeDep = d.Nome,
-        //        QtdDisc = g.Count()
-        //    })
-        //    .OrderBy(x => x.NomeDep);
-
         var Pesquisa = uni.Departamentos
             .Join(uni.Disciplinas, x => x.ID, y => y.DepartamentoID, (x, y) => new
             {
@@ -81,6 +71,10 @@ static class Pesquisador
             WriteLine(item.NomeDep + "\t\t" + item.QtdDisc);
         }
     }
+
+
+
+
 
     /// <summary>
     /// Liste os alunos com seus respectivos professores
@@ -118,6 +112,10 @@ static class Pesquisador
         }
     }
 
+
+
+
+
     /// <summary>
     /// Liste o número de alunos que cada professor possui.
     /// </summary>
@@ -140,6 +138,7 @@ static class Pesquisador
 
 
 
+
     /// <summary>
     /// Top 10 Professores com mais alunos da universidade
     /// </summary>
@@ -158,6 +157,10 @@ static class Pesquisador
         }
     }
 
+
+
+
+
     /// <summary>
     /// Considerando que todo aluno custa 300 reais mais o salário dos seus professores
     /// divido entre seus colegas de classe. Liste os alunos e seus respectivos custos
@@ -165,29 +168,29 @@ static class Pesquisador
     public static void Pesquisa5(this Universidade uni)
     {
         var Pesquisa = uni.Alunos
-             .Select(x => new
-             {
-                 Nome = x.Nome,
-                 Turmas = x.TurmasMatriculados.Join(uni.Turmas, t => t, x => x.ID, (t, x) => new
-                 {
-                     Id = x.ID,
-                     ProfessorID = x.ProfessorID,
-                     QtdAlunos = uni.Alunos.Count(y => y.TurmasMatriculados.Contains(x.ID))
-                 }).Join(uni.Professores, a => a.ProfessorID, y => y.ID, (a, y) => new
-                 {
-                     QtdAlunos = a.QtdAlunos,
-                     NomeProfessor = y.Nome,
-                     SalarioProfessor = y.Salario,
-                 }).Select(x => new
-                 {
-                     CustoTotal = (x.SalarioProfessor/x.QtdAlunos)
-                 })
+            .Select(x => new
+            {
+                Nome = x.Nome,
+                Turmas = x.TurmasMatriculados.Join(uni.Turmas, t => t, x => x.ID, (t, x) => new
+                {
+                    Id = x.ID,
+                    ProfessorID = x.ProfessorID,
+
+                })
+                .Join(uni.Professores, a => a.ProfessorID, y => y.ID, (a, y) => new
+                {
+                    SalarioProfessor = y.Salario,
+                    QtdAlunos = uni.Alunos.Where(x => x.TurmasMatriculados.Contains(a.Id)).Count(),
+                })
+                .Select(x => new
+                {
+                    CustoTotal = x.SalarioProfessor / x.QtdAlunos
+                })
              }).Select(x => new
              {
                  NomeAluno = x.Nome,
-                 CustoTotal = 300+(x.Turmas.Sum(y => y.CustoTotal)),
+                 CustoTotal = 300 + (x.Turmas.Sum(y => y.CustoTotal)),
              });
-
 
 
         foreach (var Aluno in Pesquisa)
