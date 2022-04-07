@@ -29,6 +29,8 @@ void loop(){
       
         ponto();
         traco();
+
+        Serial.print(" -. ");
       
         break;
 
@@ -38,7 +40,7 @@ void loop(){
         ponto();
         ponto();
         ponto();
-        
+        Serial.print(" -... ");
         break;
 
       case 'c':
@@ -47,7 +49,7 @@ void loop(){
         ponto();
         traco();
         ponto();
-        
+        Serial.print(" -.-. ");
         break;
 
       case 'd':
@@ -55,13 +57,13 @@ void loop(){
         traco();
         ponto();
         ponto();
-        
+        Serial.print(" -.. ");
         break;
 
       case 'e':
 
         ponto();
-      
+        Serial.print(" . ");
         break;
 
       case 'f':
@@ -70,7 +72,7 @@ void loop(){
         ponto();
         traco();
         ponto();
-        
+        Serial.print(" ..-. ");
         break;
 
       case 'g':
@@ -78,7 +80,7 @@ void loop(){
         traco();
         traco();
         ponto();
-        
+        Serial.print(" --. ");
         break;
       
       case 'h':
@@ -86,14 +88,15 @@ void loop(){
         ponto();
         ponto();
         ponto();
-        
+        ponto();
+        Serial.print(" .... ");
         break;
       
       case 'i':
 
         ponto();
         ponto();
-        
+        Serial.print(" .. ");
         break;
       
       case 'j':
@@ -102,6 +105,7 @@ void loop(){
         traco();
         traco();
         traco();
+        Serial.print(" .--- ");
         break;
       
       case 'k':
@@ -109,7 +113,7 @@ void loop(){
         traco();
         ponto();
         traco();
-        
+        Serial.print(" -.- ");
         break;
       
       case 'l':
@@ -118,21 +122,21 @@ void loop(){
         traco();
         ponto();
         ponto();
-        
+        Serial.print(" .-.. ");
         break;
 
       case 'm':
 
         traco();
         traco();
-        
+        Serial.print(" -- ");
         break;
 
       case 'n':
 
         traco();
         ponto();
-        
+        Serial.print(" -. ");
         break;
 
       case 'o':
@@ -140,6 +144,8 @@ void loop(){
         traco();
         traco();
         traco();
+
+        Serial.print(" --- ");
         
         break;
 
@@ -149,7 +155,7 @@ void loop(){
         traco();
         traco();
         ponto();
-        
+        Serial.print(" .--. ");
         break;
 
       case 'q':
@@ -158,7 +164,7 @@ void loop(){
         traco();
         ponto();
         traco();
-        
+        Serial.print(" --.- ");
         break;
 
       case 'r':
@@ -166,7 +172,7 @@ void loop(){
         ponto();
         traco();
         ponto();
-        
+        Serial.print(" .-. ");
         break;
 
       case 's':
@@ -174,12 +180,14 @@ void loop(){
         ponto();
         ponto();
         ponto();
+
+        Serial.print(" ... ");
         break;
 
       case 't':
 
         traco();
-        
+        Serial.print(" -- ");
         break;
 
       case 'u':
@@ -187,7 +195,7 @@ void loop(){
         ponto();
         ponto();
         traco();
-        
+        Serial.print(" ..- ");
         break;
 
       case 'v':
@@ -196,7 +204,7 @@ void loop(){
         ponto();
         ponto();
         traco();
-        
+        Serial.print(" ...- ");
         break;
 
       case 'w':
@@ -204,7 +212,7 @@ void loop(){
         ponto();
         traco();
         traco();
-        
+        Serial.print(" .-- ");
         break;
 
       case 'x':
@@ -213,7 +221,7 @@ void loop(){
         ponto();
         ponto();
         traco();
-        
+        Serial.print(" -..- ");
         break;
 
       case 'y':
@@ -222,7 +230,7 @@ void loop(){
         ponto();
         traco();
         traco();
-        
+        Serial.print(" -.-- ");
         break;
 
       case 'z':
@@ -231,11 +239,11 @@ void loop(){
         traco();
         ponto();
         ponto();
-        
+        Serial.print(" --.. ");
         break;
     }
   }
-
+  Serial.println("\n");
   delay(1000);
 }
 
